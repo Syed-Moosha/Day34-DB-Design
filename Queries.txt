@@ -1,0 +1,32 @@
+create table zencourse(
+fsd_id int primary key, 
+fsd_name varchar(25));
+
+create table batch(
+std_id int primary key, 
+std_name varchar(25),
+fsd_id int, 
+foreign key(fsd_id) references zencourse(fsd_id), 
+fsd_name varchar(25));
+
+create table attendance(
+std_id int,
+std_name varchar(25),
+attendance int,
+foreign key(std_id) references batch(std_id)
+);
+
+create table leaderboard(
+rank_no int primary key, 
+std_name varchar(25),
+std_id int, fsd_id int, 
+foreign key(std_id) references batch(std_id), 
+foreign key(fsd_id) references zencourse(fsd_id) );
+
+describe zencourse;
+describe batch;
+describe attendance;
+describe leaderboard;
+
+
+
